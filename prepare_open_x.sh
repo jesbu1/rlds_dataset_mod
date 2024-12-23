@@ -15,8 +15,9 @@ The default values are tested with a server with ~120GB of RAM and 24 cores.
 
 DOWNLOAD_DIR="/home/jeszhang/tensorflow_datasets/openx_datasets/"
 CONVERSION_DIR="/home/jeszhang/tensorflow_datasets/temp"
-N_WORKERS=20                  # number of workers used for parallel conversion --> adjust based on available RAM
+N_WORKERS=40                  # number of workers used for parallel conversion --> adjust based on available RAM
 MAX_EPISODES_IN_MEMORY=200    # number of episodes converted in parallel --> adjust based on available RAM
+# MAKE SURE MAX_EPISODES_IN_MEMORY % N_WORKERS == 0 because the python script will otherwise fail
 
 # increase limit on number of files opened in parallel to 20k --> conversion opens up to 1k temporary files
 # in /tmp to store dataset during conversion
