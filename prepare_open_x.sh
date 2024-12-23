@@ -14,7 +14,7 @@ The default values are tested with a server with ~120GB of RAM and 24 cores.
 '
 
 DOWNLOAD_DIR="/home/jeszhang/point_tracking/openx_datasets/"
-CONVERSION_DIR="./temp"
+CONVERSION_DIR="/home/jeszhang/point_tracking/temp"
 N_WORKERS=20                  # number of workers used for parallel conversion --> adjust based on available RAM
 MAX_EPISODES_IN_MEMORY=200    # number of episodes converted in parallel --> adjust based on available RAM
 
