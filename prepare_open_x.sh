@@ -15,8 +15,8 @@ The default values are tested with a server with ~120GB of RAM and 24 cores.
 
 DOWNLOAD_DIR="/home/jeszhang/tensorflow_datasets/openx_datasets/"
 CONVERSION_DIR="/home/jeszhang/tensorflow_datasets/temp"
-N_WORKERS=20                  # number of workers used for parallel conversion --> adjust based on available RAM
-MAX_EPISODES_IN_MEMORY=200   # number of episodes converted in parallel --> adjust based on available RAM
+N_WORKERS=5                  # number of workers used for parallel conversion --> adjust based on available RAM
+MAX_EPISODES_IN_MEMORY=50 # number of episodes converted in parallel --> adjust based on available RAM
 # MAKE SURE MAX_EPISODES_IN_MEMORY % N_WORKERS == 0 because the python script will otherwise fail
 
 # increase limit on number of files opened in parallel to 20k --> conversion opens up to 1k temporary files
@@ -29,11 +29,11 @@ echo "!!! Instead download the bridge_dataset from here: https://rail.eecs.berke
 # format: [dataset_name, dataset_version, transforms]
 DATASET_TRANSFORMS=(
     # Datasets used for OpenVLA: https://openvla.github.io/
-    #"fractal20220817_data 0.1.0 resize_and_jpeg_encode"
+    "fractal20220817_data 0.1.0 resize_and_jpeg_encode"
     "bridge 0.1.0 resize_and_jpeg_encode"  
     "kuka 0.1.0 resize_and_jpeg_encode,filter_success"
     "taco_play 0.1.0 resize_and_jpeg_encode"
-    #"jaco_play 0.1.0 resize_and_jpeg_encode"
+    "jaco_play 0.1.0 resize_and_jpeg_encode"
     "berkeley_cable_routing 0.1.0 resize_and_jpeg_encode"
     "roboturk 0.1.0 resize_and_jpeg_encode"
     "viola 0.1.0 resize_and_jpeg_encode"
