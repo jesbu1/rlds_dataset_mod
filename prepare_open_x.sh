@@ -13,8 +13,8 @@ Adjust workers to fit the available memory of your machine, the more workers + e
 The default values are tested with a server with ~120GB of RAM and 24 cores.
 '
 
-DOWNLOAD_DIR="/home/jeszhang/tensorflow_datasets/openx_datasets/"
-CONVERSION_DIR="/home/jeszhang/tensorflow_datasets/temp"
+DOWNLOAD_DIR="/home/jessez/tensorflow_datasets/openx_datasets/"
+CONVERSION_DIR="/home/jessez/tensorflow_datasets/temp"
 N_WORKERS=5                  # number of workers used for parallel conversion --> adjust based on available RAM
 MAX_EPISODES_IN_MEMORY=50 # number of episodes converted in parallel --> adjust based on available RAM
 # MAKE SURE MAX_EPISODES_IN_MEMORY % N_WORKERS == 0 because the python script will otherwise fail
@@ -64,7 +64,7 @@ for tuple in "${DATASET_TRANSFORMS[@]}"; do
   DATASET=${strings[0]}
   VERSION=${strings[1]}
   TRANSFORM=${strings[2]}
-  mkdir ${DOWNLOAD_DIR}/${DATASET}
+  mkdir -p ${DOWNLOAD_DIR}/${DATASET}
   gsutil -m cp -r gs://gresearch/robotics/${DATASET}/${VERSION} ${DOWNLOAD_DIR}/${DATASET}
   python3 modify_rlds_dataset.py --dataset=$DATASET --data_dir=$DOWNLOAD_DIR --target_dir=$CONVERSION_DIR --mods=$TRANSFORM --n_workers=$N_WORKERS --max_episodes_in_memory=$MAX_EPISODES_IN_MEMORY
   rm -rf ${DOWNLOAD_DIR}/${DATASET}
